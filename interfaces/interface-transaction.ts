@@ -1,4 +1,9 @@
 export interface Transaction {
+  success: number,
+  transaction: TransactionData
+}
+
+export interface TransactionData {
   hash: string,
   confirmations: number,
   size: number,
@@ -53,3 +58,4 @@ export interface Spent {
   hash: string,
   pos: number
 }
+

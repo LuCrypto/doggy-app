@@ -7,7 +7,8 @@ import BalanceComponent from "./component/balanceComponent";
 import ReceivedComponent from "./component/receivedComponent";
 import SentComponent from "./component/sendComponent";
 import UnspendOutputComponent from "./component/utxoComponent";
-import TransactionsComponent from "./component/transactionComponent";
+import TransactionsComponent from "./component/transactionsComponent";
+import TransactionComponent from "./component/transactionComponent";
 
 export default function Home() {
   // Variables
@@ -38,7 +39,7 @@ export default function Home() {
   }
 
   return (
-    <main className="flex items-center justify-center h-screen">
+    <main className="flex items-center justify-center min-h-svh">
       <div className="flex flex-col items-center justify-center w-full gap-4">
         <form
           className="flex flex-col w-6/12 gap-4"
@@ -97,7 +98,6 @@ export default function Home() {
           unspent_outputs={resultUnspentOutputs.unspent_outputs}
           success={resultUnspentOutputs.success}
         />
-
         <TransactionsComponent
           transactions={resultTransactions.transactions}
           success={resultTransactions.success}

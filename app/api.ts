@@ -73,3 +73,18 @@ export const getTransactions = async (inputAddress: String, page: number, setErr
 
   setTransactions(data)
 }
+
+export const getTransaction = async (transactionHash: String, setError: any, setTransaction: any) => {
+  const response = await fetch('/api/getTransaction', {
+    method: 'POST',
+    body: JSON.stringify({ transactionHash: transactionHash }),
+  })
+
+  const data = await response.json()
+  if (data.error) {
+    setError('Error : ' + data.error)
+    return
+  }
+
+  setTransaction(data)
+}

@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { Transactions } from "@/interfaces/interface-transactions";
+import { TransactionFromAddress, Transactions } from "@/interfaces/interface-transactions";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   // Handling errors
@@ -44,7 +44,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       }
     }
 
-    const fakeData = {
+    const fakeData: Transactions = {
       transactions: [
         {
           hash: "8c493d6fc2bdeeb3eed52c441028792c599e10e217d98c56fb0da872934458f0",

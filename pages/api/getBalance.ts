@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { Balance } from "@/interfaces/interface-dogeapi";
+import { Balance } from "@/interfaces/interface-global-dogeapi";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   // Handling errors
