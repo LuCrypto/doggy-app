@@ -20,10 +20,3 @@ body {
 .input {
   color: black;
 }
-
-.monTest {
-  border: 1px solid black;
-  transition-property: bottom;
-  transition-duration: 0.5s;
-  transition-timing-function: ease-out;
-}
