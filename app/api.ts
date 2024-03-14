@@ -59,10 +59,10 @@ export const getUnspentOutputs = async (inputAddress: String, setError: any, set
   setUnspentOutputs(data)
 }
 
-export const getTransactions = async (inputAddress: String, setError: any, setTransactions: any) => {
+export const getTransactions = async (inputAddress: String, page: number, setError: any, setTransactions: any) => {
   const response = await fetch('/api/getTransactions', {
     method: 'POST',
-    body: JSON.stringify({ address: inputAddress }),
+    body: JSON.stringify({ address: inputAddress, page: page }),
   })
 
   const data = await response.json()

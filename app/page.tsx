@@ -7,6 +7,7 @@ import BalanceComponent from "./component/balanceComponent";
 import ReceivedComponent from "./component/receivedComponent";
 import SentComponent from "./component/sendComponent";
 import UnspendOutputComponent from "./component/utxoComponent";
+import TransactionsComponent from "./component/transactionComponent";
 
 export default function Home() {
   // Variables
@@ -51,7 +52,7 @@ export default function Home() {
               getAmountReceived(inputValue, setError, setAmountReceived),
               getAmountSent(inputValue, setError, setAmountSent),
               getUnspentOutputs(inputValue, setError, setUnspentOutputs),
-              getTransactions(inputValue, setError, setTransactions),
+              getTransactions(inputValue, 1, setError, setTransactions),
             ];
 
             await Promise.all(arrayPromise).then(() => {
@@ -95,6 +96,11 @@ export default function Home() {
         <UnspendOutputComponent
           unspent_outputs={resultUnspentOutputs.unspent_outputs}
           success={resultUnspentOutputs.success}
+        />
+
+        <TransactionsComponent
+          transactions={resultTransactions.transactions}
+          success={resultTransactions.success}
         />
       </div>
     </main>
