@@ -3,7 +3,7 @@ import { UnspentOutputs, UnspentOutputAtomical } from "@/interfaces/interface-do
 export default function UnspendOutputComponent({ unspent_outputs, success }: UnspentOutputs) {
   if (success) {
     return (
-      <div className="bg-slate-100 p-3 rounded">
+      <div className="w-6/12 bg-slate-100 p-3 rounded">
         <p> Unspent Outputs : {unspent_outputs.length}</p>
         {unspent_outputs.map((unspentOutput: UnspentOutputAtomical, index: number) => {
           return (

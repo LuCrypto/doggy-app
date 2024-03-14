@@ -19,7 +19,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const address = JSON.parse(req.body).address;
   const url = 'https://dogechain.info/api/v1/address/transactions/';
   const fullUrl = url + address;
-  console.log(fullUrl);
 
   // Make the request
   try {

@@ -38,39 +38,45 @@ export default function Home() {
 
   return (
     <main className="flex items-center justify-center h-screen">
-      <div className="flex flex-col w-6/12 gap-4">
-        <p className="text-4xl">Enter your doge address</p>
-        <input
-          type="text"
-          placeholder="0x..."
-          className="input input-bordered w-full"
-          onChange={handleInputChange}
-        />
-        <button
-          className="btn text-xl"
-          disabled={!inputValue.trim()} // Désactiver le bouton si l'input est vide
-          onClick={
-            async () => {
-              reset()
+      <div className="flex flex-col items-center justify-center w-full gap-4">
+        <form
+          className="flex flex-col w-6/12 gap-4"
+          onSubmit={async (event) => {
+            event.preventDefault(); // Empêche le rechargement de la page
 
-              const arrayPromise = [
-                getBalance(inputValue, setError, setBalance),
-                getAmountReceived(inputValue, setError, setAmountReceived),
-                getAmountSent(inputValue, setError, setAmountSent),
-                getUnspentOutputs(inputValue, setError, setUnspentOutputs),
-                getTransactions(inputValue, setError, setTransactions)
-              ]
+            reset();
 
-              await Promise.all(arrayPromise).then(() => {
-                setLoading(false)
-              })
-            }}
+            const arrayPromise = [
+              getBalance(inputValue, setError, setBalance),
+              getAmountReceived(inputValue, setError, setAmountReceived),
+              getAmountSent(inputValue, setError, setAmountSent),
+              getUnspentOutputs(inputValue, setError, setUnspentOutputs),
+              getTransactions(inputValue, setError, setTransactions),
+            ];
+
+            await Promise.all(arrayPromise).then(() => {
+              setLoading(false);
+            });
+          }}
         >
-          Submit
-          {loading && (
-            <span className="loading loading-spinner loading-sm"></span>
-          )}
-        </button>
+          <p className="text-4xl">Enter your doge address</p>
+          <input
+            type="text"
+            placeholder="0x..."
+            className="input input-bordered w-full"
+            onChange={handleInputChange}
+          />
+          <button
+            type="submit"
+            className="btn text-xl"
+            disabled={!inputValue.trim()} // Désactiver le bouton si l'input est vide
+          >
+            Submit
+            {loading && (
+              <span className="loading loading-spinner loading-sm"></span>
+            )}
+          </button>
+        </form>
         {resultBalance.balance === '' && error !== '' && <p className="text-red-600 bg-slate-100 p-3 rounded">{error}</p>}
         <BalanceComponent
           balance={resultBalance.balance}
