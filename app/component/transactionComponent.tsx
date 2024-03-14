@@ -1,4 +1,4 @@
-import { Transaction, Transactions } from "@/interfaces/interface-dogeapi";
+import { Transaction, TransactionFromAddress, Transactions } from "@/interfaces/interface-global-dogeapi";
 import Link from "next/dist/client/link";
 
 export default function TransactionsComponent({ transactions, success }: Transactions) {
@@ -6,7 +6,7 @@ export default function TransactionsComponent({ transactions, success }: Transac
     return (
       <div className="w-6/12 bg-slate-100 p-3 rounded">
         <p> Transactions : {transactions.length}</p>
-        {transactions.map((transaction: Transaction, index: number) => {
+        {transactions.map((transaction: TransactionFromAddress, index: number) => {
           const hrefInput = "https://dogechain.info/tx/" + transaction.hash;
           return (
             <div key={index} className="flex flex-col gap-2 bg-slate-200 px-4 p-2 overflow-auto">

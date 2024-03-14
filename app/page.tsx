@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from "react";
-import { Balance, Received, Sent, UnspentOutputs, UnspentOutputAtomical, Transactions, Transaction } from "@/interfaces/interface-dogeapi";
+import { Balance, Received, Sent, UnspentOutputs, UnspentOutputAtomical, Transactions, Transaction } from "@/interfaces/interface-global-dogeapi";
 import { getAmountReceived, getAmountSent, getBalance, getTransactions, getUnspentOutputs } from "./api";
 import BalanceComponent from "./component/balanceComponent";
 import ReceivedComponent from "./component/receivedComponent";

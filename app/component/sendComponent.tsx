@@ -1,4 +1,4 @@
-import { Sent } from "@/interfaces/interface-dogeapi";
+import { Sent } from "@/interfaces/interface-global-dogeapi";
 
 export default function SentComponent({ sent, success }: Sent) {
   if (sent !== '' && success) {

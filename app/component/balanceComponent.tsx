@@ -1,4 +1,4 @@
-import { Balance } from "@/interfaces/interface-dogeapi";
+import { Balance } from "@/interfaces/interface-global-dogeapi";
 
 export default function BalanceComponent({ balance, confirmed, unconfirmed, success }: Balance) {
   if (balance !== '' && success) {

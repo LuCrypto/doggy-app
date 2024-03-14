@@ -1,4 +1,4 @@
-import { Received } from "@/interfaces/interface-dogeapi";
+import { Received } from "@/interfaces/interface-global-dogeapi";
 
 export default function ReceivedComponent({ received, success }: Received) {
   if (received !== '' && success) {

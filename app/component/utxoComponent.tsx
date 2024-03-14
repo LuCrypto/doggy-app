@@ -1,4 +1,4 @@
-import { UnspentOutputs, UnspentOutputAtomical } from "@/interfaces/interface-dogeapi";
+import { UnspentOutputs, UnspentOutputAtomical } from "@/interfaces/interface-global-dogeapi";
 
 export default function UnspendOutputComponent({ unspent_outputs, success }: UnspentOutputs) {
   if (success) {
