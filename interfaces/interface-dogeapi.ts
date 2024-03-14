@@ -42,3 +42,8 @@ export interface Transactions {
   transactions: Transaction[],
   success: number
 }
+
+export interface BlockHash {
+  hash: string,
+  success: number
+}
