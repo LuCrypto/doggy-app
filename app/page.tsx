@@ -8,7 +8,6 @@ import ReceivedComponent from "./component/receivedComponent";
 import SentComponent from "./component/sendComponent";
 import UnspendOutputComponent from "./component/utxoComponent";
 import TransactionsComponent from "./component/transactionsComponent";
-import TransactionComponent from "./component/transactionComponent";
 
 export default function Home() {
   // Variables
@@ -28,6 +27,7 @@ export default function Home() {
     setInputValue(event.target.value);
   };
 
+  // Reset state
   const reset = () => {
     setLoading(true)
     setBalance({ balance: '', confirmed: '', unconfirmed: '', success: 0 })
@@ -40,11 +40,11 @@ export default function Home() {
 
   return (
     <main className="flex items-center justify-center min-h-svh">
-      <div className="flex flex-col items-center justify-center w-full gap-4">
+      <div className="flex flex-col items-center justify-center w-full gap-4 py-4">
         <form
           className="flex flex-col w-6/12 gap-4"
           onSubmit={async (event) => {
-            event.preventDefault(); // Empêche le rechargement de la page
+            event.preventDefault();
 
             reset();
 
@@ -71,7 +71,7 @@ export default function Home() {
           <button
             type="submit"
             className="btn text-xl"
-            disabled={!inputValue.trim()} // Désactiver le bouton si l'input est vide
+            disabled={!inputValue.trim()}
           >
             Submit
             {loading && (
@@ -103,6 +103,10 @@ export default function Home() {
           success={resultTransactions.success}
         />
       </div>
+      <a className="fixed right-[10%] bottom-[-80px] monTest" href="https://dogechain.info/address/AC8Q9Z4i4sXcbW7TV1jqrjG1JEWMdLyzcy" target="_blank" rel="noreferrer">
+        <img src="/doge.png" alt="dogechain" />
+      </a>
+
     </main>
   )
 }

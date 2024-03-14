@@ -1,4 +1,4 @@
-import { Transaction, TransactionFromAddress, Transactions } from "@/interfaces/interface-global-dogeapi";
+import { TransactionFromAddress, Transactions } from "@/interfaces/interface-global-dogeapi";
 import Link from "next/dist/client/link";
 import { useState } from "react";
 import TransactionComponent from "./transactionComponent";
@@ -10,6 +10,7 @@ export default function TransactionsComponent({ transactions, success }: Transac
 
   const [error, setError] = useState('Error for the transaction details');
   const [loading, setLoading] = useState(false)
+  const [open, setOpen] = useState(false);
 
   if (success) {
     return (
@@ -27,7 +28,13 @@ export default function TransactionsComponent({ transactions, success }: Transac
               <div>
                 <button className="bg-slate-300 p-1 rounded" onClick={async (event) => {
                   event.preventDefault(); // Empêche le rechargement de la page
+                  if (open) {
+                    setOpen(false);
+                    return;
+                  }
+
                   setLoading(true);
+                  setDetailledTransaction({ transaction: {}, success: -1 });
 
                   const arrayPromise = [
                     getTransaction(transaction.hash, setError, setDetailledTransaction),
@@ -35,6 +42,7 @@ export default function TransactionsComponent({ transactions, success }: Transac
 
                   await Promise.all(arrayPromise).then(() => {
                     setLoading(false);
+                    setOpen(true);
                   });
                 }}>Details
                   {loading && (
@@ -44,10 +52,12 @@ export default function TransactionsComponent({ transactions, success }: Transac
                 {resultDetailledTransaction && resultDetailledTransaction.success === 0 && (
                   <p className="text-red-600 bg-slate-100 p-3 rounded">{error}</p>
                 )}
-                <TransactionComponent
-                  transaction={resultDetailledTransaction.transaction}
-                  success={resultDetailledTransaction.success}
-                />
+                {open && (
+                  <TransactionComponent
+                    transaction={resultDetailledTransaction.transaction}
+                    success={resultDetailledTransaction.success}
+                  />
+                )}
 
               </div>
             </div>
